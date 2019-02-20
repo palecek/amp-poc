@@ -1,0 +1,13 @@
+{
+  "name": "amp-poc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "node ./mock/server.js"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "express": "4.16.4"
+  }
+}
