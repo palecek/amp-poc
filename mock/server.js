@@ -5,42 +5,32 @@ const app = express()
 const port = 9800
 const currencyFormatter = require('./lib/currency').formatter
 const currencyParser = require('./lib/currency').parser
+const durationFormatter = require('./lib/duration').formatter
+const Loans = require('./Loans').Loans
+const loans = new Loans(require('./loans.json'))
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.use('/src', express.static('src'))
+app.use('/', express.static('src'))
 app.get('/mock/loans', (req, res) => {
   enableCorsNaive(req, res)
-  let value = {
-    amount: 200000,
-    payment: 2723,
-    duration: 93,
-    durationFormatted: {
-      years: 7,
-      months: 9
-    }
-  }
-
-  if (req.query.amount) {
-    value.amount = (currencyParser(req.query.amount) || 0)
-  }
-  if (req.query.payment) {
-    value.payment = (currencyParser(req.query.payment) || 0)
-  }
+  let amount = req.query.fAmount ? currencyParser(req.query.fAmount) || 0 : 0
+  let payment = req.query.fPayment ? currencyParser(req.query.fPayment) || 0 : 0
+  let loan = loans.getLoanByAmountAndPayment(amount, payment)
 
   if (req.query.actionButton === 'amountPlus') {
-    value.amount = (currencyParser(req.query.amount) || 0) + 1
+    loan = loans.getLoanByAmountAndPayment(loans.getNextAmount(amount), payment)
   } else if (req.query.actionButton === 'amountMinus') {
-    value.amount = (currencyParser(req.query.amount) || 0) - 1
+    loan = loans.getLoanByAmountAndPayment(loans.getPrevAmount(amount), payment)
   } else if (req.query.actionButton === 'paymentPlus') {
-    value.payment = (currencyParser(req.query.payment) || 0) + 1
+    loan = loans.getLoanByAmountAndPayment(amount, loans.getNextPayment(amount, payment))
   } else if (req.query.actionButton === 'paymentMinus') {
-    value.payment = (currencyParser(req.query.payment) || 0) - 1
+    loan = loans.getLoanByAmountAndPayment(amount, loans.getPrevPayment(amount, payment))
   } 
 
-  value.amount = currencyFormatter(value.amount)
-  value.payment = currencyFormatter(value.payment)
+  loan.fAmount = currencyFormatter(loan.amount)
+  loan.fPayment = currencyFormatter(loan.monthlyPayment)
+  loan.fDuration = durationFormatter(loan.duration)
 
-  res.send(JSON.stringify(value))
+  res.send(JSON.stringify(loan))
 })
 
 app.get('/mock/params', (req, res) => {
@@ -51,20 +41,6 @@ app.get('/mock/params', (req, res) => {
   }
 
   res.send(JSON.stringify(value))
-})
-
-app.post('/mock/merged.json', (req, res) => {
-  enableCorsNaive(req, res)
-  console.log('req.body: ', req.body)
-  res.send(JSON.stringify(
-    {
-      "amount": "200 001",
-      "payment": "2 723",
-      "duration": 93,
-      "durationInYears": 7,
-      "durationInMonths": 9
-    }
-  ))
 })
 
 function enableCorsNaive(req, res, origin, opt_exposeHeaders) {

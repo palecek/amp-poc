@@ -33,26 +33,39 @@
       <template type="amp-mustache">
         <div style="display: inline-block">
           <form
-            id="aemPocForm"
+            id="ampPocForm"
             method="get"
             action-xhr="/mock/loans"
-            on="submit: aemPocForm.clear; submit-success: AMP.setState({form: {amount: event.response.amount, payment: event.response.payment}})"
-            target="_blank">
+            on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
+                submit-success: AMP.setState({form: event.response})"
+            target="_top">
             <div class="csas-calc-input-plusminus">
               <button name="actionButton" value="amountMinus">-</button>
-              <input type="tel" style="text-align: right" name="amount" value="{{amount}}" [value]="form.amount" on="change: aemPocForm.submit" />
+              <input type="tel" style="text-align: right" name="fAmount"
+                     value="{{fAmount}}" [value]="form.fAmount"
+                     on="change: ampPocForm.submit" />
               <button name="actionButton" value="amountPlus">+</button>
             </div>
             <div class="csas-calc-input-plusminus">
               <button name="actionButton" value="paymentMinus">-</button>
-              <input type="tel" style="text-align: right" name="payment" value="{{payment}}" [value]="form.payment" on="change: aemPocForm.submit">
+              <input type="tel" style="text-align: right" name="fPayment"
+                     value="{{fPayment}}" [value]="form.fPayment"
+                     on="change: ampPocForm.submit">
               <button name="actionButton" value="paymentPlus">+</button>
             </div>
           </form>
         </div>
         <div style="display: inline-block">
-          <p>{{duration}} splátek</p>
-          <p>{{durationFormatted.years}} let {{durationFormatted.months}} měsíců</p>
+          <p>
+           <span [text]="form.duration">{{duration}}</span>
+           <span>splátek</span>
+          </p>
+          <p>
+            <span [text]="form.fDuration.years">{{fDuration.years}}</span>
+            <span>let</span>
+            <span [text]="form.fDuration.months">{{fDuration.months}}</span>
+            <span>měsíců</span>
+          </p>
         </div>
       </template>
     </amp-list>
