@@ -26,58 +26,60 @@
   <body>
     <h1>AmpPoc</h1>
 
-    <amp-list
-      src="/mock/loans"
-      layout="fixed-height" height="150"
-      items="." single-item binding="no">
-      <template type="amp-mustache">
-        <div style="display: inline-block">
-          <form
-            id="ampPocForm"
-            method="get"
-            action-xhr="/mock/loans"
-            on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
-                submit-success: AMP.setState({form: event.response})"
-            target="_top">
-            <div class="csas-calc-input-plusminus">
-              <button name="actionButton" value="amountMinus">-</button>
-              <input type="tel" style="text-align: right" name="fAmount"
-                     value="{{fAmount}}" [value]="form.fAmount"
-                     on="change: ampPocForm.submit" />
-              <button name="actionButton" value="amountPlus">+</button>
-            </div>
-            <div class="csas-calc-input-plusminus">
-              <button name="actionButton" value="paymentMinus">-</button>
-              <input type="tel" style="text-align: right" name="fPayment"
-                     value="{{fPayment}}" [value]="form.fPayment"
-                     on="change: ampPocForm.submit">
-              <button name="actionButton" value="paymentPlus">+</button>
-            </div>
-          </form>
-        </div>
-        <div style="display: inline-block">
-          <p>
-           <span [text]="form.duration">{{duration}}</span>
-           <span>splátek</span>
-          </p>
-          <p>
-            <span [text]="form.fDuration.years">{{fDuration.years}}</span>
-            <span>let</span>
-            <span [text]="form.fDuration.months">{{fDuration.months}}</span>
-            <span>měsíců</span>
-          </p>
-        </div>
-      </template>
-    </amp-list>
+    <div class="csas-loan-calculator">
+      <amp-list
+        src="/mock/loans"
+        layout="fixed-height" height="150"
+        items="." single-item binding="no">
+        <template type="amp-mustache">
+          <div style="display: inline-block">
+            <form
+              id="ampPocForm"
+              method="get"
+              action-xhr="/mock/loans"
+              on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
+                  submit-success: AMP.setState({form: event.response})"
+              target="_top">
+              <div class="csas-calc-input-plusminus">
+                <button name="actionButton" value="amountMinus">-</button>
+                <input type="tel" style="text-align: right" name="fAmount"
+                       value="{{fAmount}}" [value]="form.fAmount"
+                       on="change: ampPocForm.submit" />
+                <button name="actionButton" value="amountPlus">+</button>
+              </div>
+              <div class="csas-calc-input-plusminus">
+                <button name="actionButton" value="paymentMinus">-</button>
+                <input type="tel" style="text-align: right" name="fPayment"
+                       value="{{fPayment}}" [value]="form.fPayment"
+                       on="change: ampPocForm.submit">
+                <button name="actionButton" value="paymentPlus">+</button>
+              </div>
+            </form>
+          </div>
+          <div style="display: inline-block">
+            <p>
+            <span [text]="form.duration">{{duration}}</span>
+            <span>splátek</span>
+            </p>
+            <p>
+              <span [text]="form.fDuration.years">{{fDuration.years}}</span>
+              <span>let</span>
+              <span [text]="form.fDuration.months">{{fDuration.months}}</span>
+              <span>měsíců</span>
+            </p>
+          </div>
+        </template>
+      </amp-list>
 
-    <amp-list
-      src="/mock/params"
-      layout="fixed-height" height="100"
-      items="." single-item binding="no">
-      <template type="amp-mustache">
-        <a href="{{url1}}">button 1</a>
-        <a href="{{url2}}">button 2</a>
-      </template>
-    </amp-list>
+      <amp-list
+        src="/mock/params"
+        layout="fixed-height" height="100"
+        items="." single-item binding="no">
+        <template type="amp-mustache">
+          <a href="{{url1}}">button 1</a>
+          <a href="{{url2}}">button 2</a>
+        </template>
+      </amp-list>
+    </div>
   </body>
 </html>
