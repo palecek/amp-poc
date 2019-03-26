@@ -1,5 +1,5 @@
 <!doctype html>
-<html amp lang="en">
+<html amp lang="cs">
   <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -22,64 +22,433 @@
       }
     </script>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700">
+    <style amp-custom>
+      *, :after, :before {
+        box-sizing: border-box;
+      }
+      html {
+        height: 100%;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        font-family: sans-serif;
+      }
+      .inlet-wrapp {
+        font-family: "Open Sans",sans-serif;
+        color: #303a45;
+        font-size: 16px;
+        text-align: left;
+        line-height: 1.5;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .inlet-wrapp .csas-section {
+        position: relative;
+      }
+      .inlet-wrapp .csas-wrapper {
+        max-width: 120rem;
+        margin: 0 auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .inlet-wrapp .csas-mb-md {
+        margin-bottom: 45px;
+      }
+      .inlet-wrapp .csas-calc-loan {
+        flex-wrap: wrap;
+        background-color: #fff;
+        border-radius: 4px;
+      }
+      .inlet-wrapp .csas-calc-loan .csas-calc-loan--inner {
+        border-radius: 4px 4px 0 0;
+        border: 1px solid #bde4f9;
+      }
+      .inlet-wrapp .grid {
+        letter-spacing: -4px;
+      }
+      .inlet-wrapp .csas-norow {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .grid {
+        display: block;
+        font-size: 0;
+        padding: 0;
+        text-align: left;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+      }
+      .inlet-wrapp .csas-norow>[class*=of1] {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .md-8of12, .md-4of12 {
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 1.6rem;
+        letter-spacing: 0;
+        margin: 0;
+        padding: 0 1.5rem;
+        vertical-align: top;
+        width: 100%;
+      }
+      .inlet-wrapp .csas-calc-white-section {
+        padding: 30px 0 15px;
+      }
+      @media (max-width: 767px) {
+       .inlet-wrapp .csas-calc-row {
+          text-align: center;
+        }
+      }
+      .inlet-wrapp .csas-calc-row {
+        padding: 0 30px;
+        margin-bottom: 20px;
+      }
+      @media (max-width: 767px) {
+        .inlet-wrapp .csas-calc-controls-label {
+          margin-bottom: 5px;
+        }
+      }
+      .inlet-wrapp .csas-calc-controls {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        border: 1px solid #40a3d5;
+        background-color: #fff;
+        display: inline-block;
+        line-height: 40px;
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+        vertical-align: middle;
+      }
+      .inlet-wrapp .csas-calc-controls:after, .inlet-wrapp .csas-calc-controls:before {
+        content: '';
+        width: 15px;
+        height: 2px;
+        background-color: #40a3d5;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
+      .inlet-wrapp .csas-calc-controls.csas-calc-controls--plus:after {
+        transform: rotate(90deg);
+      }
+      .inlet-wrapp button {
+        text-decoration: none;
+      }
+      .inlet-wrapp .csas-calc-input.csas-calc-input--medium {
+        width: 105px;
+      }
+      .inlet-wrapp .csas-calc-input {
+        border-radius: 5px;
+        border: 1px solid #90a0b2;
+        background-color: #fff;
+        box-shadow: inset 0 1px 3px 0 rgba(144,160,178,.67);
+        padding: 0 7.5px;
+        color: #063768;
+        text-align: center;
+        display: inline-table;
+        vertical-align: middle;
+        height: 40px;
+      }
+      .inlet-wrapp .csas-calc-input input.csas-input-tel,
+      .inlet-wrapp .csas-calc-input input[type=tel] {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0 4px 0 0;
+        font-style: normal;
+        font-weight: 700;
+        text-align: right;
+        font-size: 16px;
+      }
+      .inlet-wrapp .csas-calc-input input.csas-input-tel,
+      .inlet-wrapp .csas-calc-input input[type=tel],
+      .inlet-wrapp .csas-calc-input label {
+        line-height: 38px;
+        height: 38px;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .inlet-wrapp .csas-calc-input label {
+        font-size: 14px;
+        margin: 0;
+        transform: translate(0,1px);
+      }
+      .inlet-wrapp input.csas-input-tel,
+      .inlet-wrapp input[type=tel] {
+        width: 100%;
+        border-radius: 5px;
+        transition: .25s;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+      }
+      input {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+      }
+      .inlet-wrapp button:focus, .inlet-wrapp input[type=submit]:focus {
+        outline: 0;
+      }
+      .inlet-wrapp button, .inlet-wrapp button:hover, .inlet-wrapp input[type=submit], .inlet-wrapp input[type=submit]:hover {
+        text-decoration: none;
+      }
+      .inlet-wrapp .csas-mt-xs {
+        margin-top: 15px;
+      }
+      .tips-rotator {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      .inlet-wrapp .csas-tip {
+        display: inline-block;
+        border-radius: 5px;
+        padding: 13px 25px 13px 55px;
+        font-size: 15px;
+        background: #bde4f9 url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0aD0iMTdweCIgaGVpZ2h0PSIxNy44MTFweCIgdmlld0JveD0iMCAwIDE3IDE3LjgxMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTcgMTcuODExIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBmaWxsPSIjMDA0OTdCIiBkPSJNOC41LDMuMjM4Yy0yLjkwMSwwLTUuMjYyLDIuMzYtNS4yNjIsNS4yNjJjMCwyLjI5MywxLjQ4Miw0LjMwNywzLjY0Myw1LjAwM3YwLjY2NAoJCWMwLDAuMjI0LDAuMTgyLDAuNDA0LDAuNDA1LDAuNDA0aDIuNDI5YzAuMjIzLDAsMC40MDUtMC4xODIsMC40MDUtMC40MDR2LTAuNjY0YzIuMTYtMC42OTcsMy42NDQtMi43MTEsMy42NDQtNS4wMDMKCQlDMTMuNzYyLDUuNTk5LDExLjQsMy4yMzgsOC41LDMuMjM4TDguNSwzLjIzOHoiLz4KCTxwYXRoIGZpbGw9IiMwMDQ5N0IiIGQ9Ik04LjkwNSwxN0g4LjA5NWMtMC4yMjMsMC0wLjQwNSwwLjE4My0wLjQwNSwwLjQwNGMwLDAuMjI0LDAuMTgyLDAuNDA1LDAuNDA1LDAuNDA1aDAuODExCgkJYzAuMjIzLDAsMC40MDUtMC4xODMsMC40MDUtMC40MDVDOS4zMTEsMTcuMTgyLDkuMTI4LDE3LDguOTA1LDE3TDguOTA1LDE3eiIvPgoJPHBhdGggZmlsbD0iIzAwNDk3QiIgZD0iTTkuNzE0LDE1LjM4MUg3LjI4NmMtMC4yMjMsMC0wLjQwNSwwLjE4My0wLjQwNSwwLjQwNGMwLDAuMjI0LDAuMTgyLDAuNDA1LDAuNDA1LDAuNDA1aDIuNDI5CgkJYzAuMjIzLDAsMC40MDUtMC4xODMsMC40MDUtMC40MDVDMTAuMTE5LDE1LjU2Myw5LjkzOCwxNS4zODEsOS43MTQsMTUuMzgxTDkuNzE0LDE1LjM4MXoiLz4KCTxwYXRoIGZpbGw9IiMwMDQ5N0IiIGQ9Ik04LjUsMi40MjljMC4yMjMsMCwwLjQwNS0wLjE4MywwLjQwNS0wLjQwNVYwLjQwNUM4LjkwNSwwLjE4MSw4LjcyMywwLDguNSwwCgkJQzguMjc2LDAsOC4wOTUsMC4xODEsOC4wOTUsMC40MDV2MS42MTlDOC4wOTUsMi4yNDcsOC4yNzYsMi40MjksOC41LDIuNDI5TDguNSwyLjQyOXoiLz4KCTxwYXRoIGZpbGw9IiMwMDQ5N0IiIGQ9Ik0xNi41OTUsOC4wOTRoLTEuNjE4Yy0wLjIyNCwwLTAuNDA2LDAuMTgyLTAuNDA2LDAuNDA1YzAsMC4yMjUsMC4xODMsMC40MDUsMC40MDYsMC40MDVoMS42MTgKCQlDMTYuODE4LDguOTA1LDE3LDguNzI0LDE3LDguNUMxNyw4LjI3NiwxNi44MTgsOC4wOTQsMTYuNTk1LDguMDk0TDE2LjU5NSw4LjA5NHoiLz4KCTxwYXRoIGZpbGw9IiMwMDQ5N0IiIGQ9Ik0yLjAyNCw4LjA5NEgwLjQwNUMwLjE4MSw4LjA5NCwwLDguMjc2LDAsOC41YzAsMC4yMjUsMC4xODEsMC40MDUsMC40MDUsMC40MDVoMS42MTkKCQljMC4yMjMsMCwwLjQwNS0wLjE4MSwwLjQwNS0wLjQwNUMyLjQyOSw4LjI3NiwyLjI0Nyw4LjA5NCwyLjAyNCw4LjA5NEwyLjAyNCw4LjA5NHoiLz4KCTxwYXRoIGZpbGw9IiMwMDQ5N0IiIGQ9Ik0zLjYzNCw0LjIwOWMwLjA4LDAuMDc4LDAuMTgzLDAuMTE4LDAuMjg3LDAuMTE4czAuMjA4LTAuMDQsMC4yODctMC4xMThjMC4xNTgtMC4xNTgsMC4xNTgtMC40MTUsMC0wLjU3MwoJCUwyLjQ5LDEuOTE4Yy0wLjE1OC0wLjE1OS0wLjQxNS0wLjE1OS0wLjU3MiwwYy0wLjE1OCwwLjE1OC0wLjE1OCwwLjQxNCwwLDAuNTcyTDMuNjM0LDQuMjA5TDMuNjM0LDQuMjA5eiIvPgoJPHBhdGggZmlsbD0iIzAwNDk3QiIgZD0iTTEzLjA3OSw0LjMyN2MwLjEwNCwwLDAuMjA4LTAuMDQsMC4yODctMC4xMThsMS43MTgtMS43MTljMC4xNTgtMC4xNTksMC4xNTgtMC40MTUsMC0wLjU3MgoJCWMtMC4xNTgtMC4xNTktMC40MTUtMC4xNTktMC41NzIsMGwtMS43MTgsMS43MThjLTAuMTU4LDAuMTU4LTAuMTU4LDAuNDE0LDAsMC41NzNDMTIuODcyLDQuMjg3LDEyLjk3NSw0LjMyNywxMy4wNzksNC4zMjcKCQlMMTMuMDc5LDQuMzI3eiIvPgo8L2c+Cjwvc3ZnPgo=') 20px center no-repeat;
+        text-align: left;
+        color: #00497b;
+      }
+      .inlet-wrapp .csas-results-section {
+        background-color: #bde4f9;
+        color: #00497b;
+        position: relative;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+      }
+      .inlet-wrapp .csas-result.csas-result-dark:first-child {
+        border-radius: 0 4px 0 0;
+      }
+      .inlet-wrapp .csas-result.csas-result-dark {
+        background-color: #00497b;
+        color: #fff;
+        -webkit-box-flex: 1.5;
+        flex: 1.5 0 auto;
+      }
+      @media (max-width: 767px) {
+        .inlet-wrapp .csas-result {
+          padding: 15px;
+        }
+      }
+      .inlet-wrapp .csas-result {
+        border-bottom: 1px solid #fff;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+      }
+      .inlet-wrapp .csas-result:last-child {
+        border-bottom: none;
+      }
+      .inlet-wrapp .csas-results-section--justify .csas-result-inner {
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+      }
+      .inlet-wrapp .csas-result .csas-result-inner {
+        display: flex;
+        width: 100%;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+      .inlet-wrapp .csas-mr-xs {
+        margin-right: 15px;
+      }
+      .inlet-wrapp .csas-mt-xs {
+        margin-top: 15px;
+      }
+      .inlet-wrapp .csas-result small {
+        display: block;
+        font-size: 12px;
+      }
+      .inlet-wrapp .csas-text-medium-blue {
+        color: #dff2fd;
+      }
+      .normalFont {
+        font-weight: 600;
+      }
+      strong {
+       font-weight: 700;
+      }
+      .inlet-wrapp .csas-results-section--justify .csas-result-inner-right {
+        padding-left: 10px;
+        text-align: right;
+      }
+      .inlet-wrapp .csas-result .csas-result-inner-right {
+        white-space: nowrap;
+        font-size: 18px;
+      }
+    </style>
   </head>
-  <body>
+  <body style="background-color: #dff2fd;">
     <h1>AmpPoc</h1>
 
     <div class="csas-loan-calculator">
-      <amp-list
-        src="/mock/loans"
-        layout="fixed-height" height="150"
-        items="." single-item binding="no">
-        <template type="amp-mustache">
-          <div style="display: inline-block">
-            <form
-              id="ampPocForm"
-              method="get"
-              action-xhr="/mock/loans"
-              on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
-                  submit-success: AMP.setState({form: event.response})"
-              target="_top">
-              <div class="csas-calc-input-plusminus">
-                <button name="actionButton" value="amountMinus">-</button>
-                <input type="tel" style="text-align: right" name="fAmount"
-                       value="{{fAmount}}" [value]="form.fAmount"
-                       on="change: ampPocForm.submit" />
-                <button name="actionButton" value="amountPlus">+</button>
-              </div>
-              <div class="csas-calc-input-plusminus">
-                <button name="actionButton" value="paymentMinus">-</button>
-                <input type="tel" style="text-align: right" name="fPayment"
-                       value="{{fPayment}}" [value]="form.fPayment"
-                       on="change: ampPocForm.submit">
-                <button name="actionButton" value="paymentPlus">+</button>
-              </div>
-            </form>
-          </div>
-          <div style="display: inline-block">
-            <p>
-            <span [text]="form.duration">{{duration}}</span>
-            <span>splátek</span>
-            </p>
-            <p>
-              <span [text]="form.fDuration.years">{{fDuration.years}}</span>
-              <span>let</span>
-              <span [text]="form.fDuration.months">{{fDuration.months}}</span>
-              <span>měsíců</span>
-            </p>
-          </div>
-        </template>
-      </amp-list>
+      <div class="inlet-wrapp">
+        <div class="inlet-inner">
+          <div class="csas-wrapper csas-section">
+            <div class="csas-calc-loan csas-mb-md">
+              <amp-list
+                src="/mock/loans"
+                layout="fixed-height" height="1500"
+                items="." single-item binding="no">
+                <template type="amp-mustache">
+                  <div class="grid csas-norow csas-flex-sm csas-calc-loan--inner">
+                    <div class="md-8of12 csas-calc-left-section">
+                      <form
+                        id="ampPocForm"
+                        method="get"
+                        action-xhr="/mock/loans"
+                        on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
+                            submit-success: AMP.setState({form: event.response})"
+                        target="_top">
+                        <div class="csas-calc-white-section csas-test-section">
+                          <div class="csas-calc-row csas-half-in-mobile">
+                            <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
+                              Kolik si plánujete půjčit?
+                            </div>
+                            <div class="csas-calc-controls-group">
+                              <button
+                                class="csas-calc-controls csas-calc-controls--minus"
+                                name="actionButton" value="amountMinus">
+                                &nbsp;
+                              </button>
+                              <div class="csas-calc-input csas-calc-input--medium">
+                                <input
+                                  type="tel"
+                                  class="csas-input-tel"
+                                  name="fAmount"
+                                  value="{{fAmount}}" [value]="form.fAmount"
+                                  on="change: ampPocForm.submit" />
+                                <label>Kč</label>
+                              </div>
+                              <button
+                                class="csas-calc-controls csas-calc-controls--plus"
+                                name="actionButton" value="amountPlus">
+                                &nbsp;
+                              </button>
+                            </div>
+                          </div>
+                          <div class="csas-calc-row csas-half-in-mobile">
+                            <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
+                              Kolik chcete měsíčně splácet?
+                            </div>
+                            <div class="csas-calc-controls-group">
+                              <button
+                                class="csas-calc-controls csas-calc-controls--minus"
+                                name="actionButton" value="paymentMinus">
+                                &nbsp;
+                              </button>
+                              <div class="csas-calc-input csas-calc-input--medium">
+                                <input
+                                  type="tel"
+                                  class="csas-input-tel"
+                                  name="fPayment"
+                                  value="{{fPayment}}" [value]="form.fPayment"
+                                  on="change: ampPocForm.submit" />
+                                <label>Kč</label>
+                              </div>
+                              <button
+                                class="csas-calc-controls csas-calc-controls--plus"
+                                name="actionButton" value="paymentPlus">
+                                &nbsp;
+                              </button>
+                            </div>
+                          </div>
+                          <div class="csas-calc-row csas-mt-xs">
+                            <span class="tips-rotator">
+                              <div class="csas-tip">
+                                <strong>TIP:</strong>
+                                <span>Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu 6,3 % a odpustíme vám 15 posledních splátek.</span>
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="md-4of12 csas-results-section csas-results-section--justify">
+                      <div class="csas-results-section">
+                        <div class="csas-result csas-low-result csas-result-dark">
+                          <div class="csas-result-inner">
+                            <div class="csas-result-inner-left">
+                              Počet splátek při<br>
+                              řádném splácení
+                              <small>
+                                <div class="csas-text-medium-blue normalFont csas-mr-xs csas-mt-xs">
+                                  S žádnou splátkou se nezpozdíte déle než 5 dní.
+                                </div>
+                              </small>
+                            </div>
+                            <div class="csas-result-inner-right">
+                              <strong>
+                                {{duration}} splátek
+                              </strong><br>
+                              <small>
+                                {{fDuration.years}} let
+                                <span>{{fDuration.months}} měsíců</span>
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="csas-result csas-low-result">
+                          <div class="csas-result-inner">
+                            <div class="csas-result-inner-left ng-binding">
+                              Úroková sazba:
+                            </div>
+                            <div class="csas-result-inner-right">
+                              <strong>{{bInterestRate}} %</strong>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="csas-result csas-low-result">
+                          <div class="csas-result-inner">
+                            <div class="csas-result-inner-left">RPSN</div>
+                            <div class="csas-result-inner-right">
+                              <strong>{{bRpsn}} %</strong>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="csas-result csas-low-result">
+                          <div class="csas-result-inner">
+                            <div class="csas-result-inner-left">
+                              Celkem zaplatíte:
+                            </div>
+                            <div class="csas-result-inner-right">
+                              <strong>{{fbPaymentAmount}} Kč</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </amp-list>
 
-      <amp-list
-        src="/mock/params"
-        layout="fixed-height" height="100"
-        items="." single-item binding="no">
-        <template type="amp-mustache">
-          <a href="{{url1}}">button 1</a>
-          <a href="{{url2}}">button 2</a>
-        </template>
-      </amp-list>
+              <amp-list
+                src="/mock/params"
+                layout="fixed-height" height="100"
+                items="." single-item binding="no">
+                <template type="amp-mustache">
+                  <div class="csas-cta-section csas-flex-sm csas-norow csas-mt-md">
+                    <a href="{{url1}}">button 1</a>
+                    <a href="{{url2}}">button 2</a>
+                  </div>
+                </template>
+              </amp-list>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

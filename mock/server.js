@@ -24,11 +24,12 @@ app.get('/mock/loans', (req, res) => {
     loan = loans.getLoanByAmountAndPayment(amount, loans.getNextPayment(amount, payment))
   } else if (req.query.actionButton === 'paymentMinus') {
     loan = loans.getLoanByAmountAndPayment(amount, loans.getPrevPayment(amount, payment))
-  } 
+  }
 
   loan.fAmount = currencyFormatter(loan.amount)
   loan.fPayment = currencyFormatter(loan.monthlyPayment)
   loan.fDuration = durationFormatter(loan.duration)
+  loan.fbPaymentAmount = currencyFormatter(loan.bPaymentAmount)
 
   res.send(JSON.stringify(loan))
 })
@@ -48,7 +49,7 @@ function enableCorsNaive(req, res, origin, opt_exposeHeaders) {
     origin = req.query.__amp_source_origin;
   } else {
     origin = req.headers.origin;
-  } 
+  }
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', origin);
   res.setHeader('Access-Control-Expose-Headers',
@@ -62,4 +63,4 @@ function enableCorsNaive(req, res, origin, opt_exposeHeaders) {
 
 const httpsServer = https.createServer(httpsCredentials, app)
 
-httpsServer.listen(port, () => console.log(`Example app listening on port ${port}!`))
+httpsServer.listen(port, () => console.log(`App: https://localhost:${port}!`))
