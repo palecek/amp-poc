@@ -5,12 +5,9 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <title>AmpPoc</title>
     <link rel="canonical" href="http://example.ampproject.org/article-metadata.html">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1">
     <!-- begin - csas-loan-calculator -->
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
-    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700">
     <!-- end - csas-loan-calculator -->
     <script type="application/ld+json">
@@ -361,196 +358,237 @@
 
     <!-- begin - csas-loan-calculator -->
     <div class="csas-loan-calculator">
+      <amp-state id="form">
+        <script type="application/json">
+          {
+            "fAmount": "20 000",
+            "fPayment": "306",
+            "actionButton": null
+          }
+        </script>
+      </amp-state>
+
+      <amp-state
+        id="loan"
+        [src]="'/mock/loans?fAmount=' + form.fAmount + '&fPayment=' + form.fPayment + '&actionButton=' + form.actionButton">
+        <script type="application/json">
+          {
+            "amount":20000,
+            "interestRate":9.9,
+            "rpsn":10.87,
+            "monthlyPayment":334,
+            "payments":84,
+            "duration":84,
+            "paymentAmount":28240,
+            "bInterestRate":7.05,
+            "bDuration":74,
+            "bPaymentAmount":24900,
+            "bRpsn":7.65,
+            "fAmount":"20 000",
+            "fPayment":"334",
+            "fDuration":{
+              "years":7,
+              "months":0
+            },
+            "fBDuration":{
+              "years":6,
+              "months":2
+            },
+            "fBPaymentAmount":"24 900",
+            "fRpsn":"10,9",
+            "fBRpsn":"7,7",
+            "fInterestRate":"9,9",
+            "fBInterestRate":"7,1"
+          }
+        </script>
+      </amp-state>
+
       <div class="inlet-wrapp">
         <div class="inlet-inner">
           <div class="csas-wrapper csas-section">
             <div class="csas-calc-loan csas-mb-md">
-              <amp-list
-                src="/mock/loans"
-                layout="fixed-height" height="752"
-                items="." single-item binding="no">
-                <template type="amp-mustache">
-                  <div class="grid csas-norow csas-flex-sm csas-calc-loan--inner">
-                    <div class="md-8of12 csas-calc-left-section">
-                      <form
-                        id="ampPocForm"
-                        method="get"
-                        action-xhr="/mock/loans"
-                        action="/mock/loans"
-                        on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
-                            submit-success: AMP.setState({form: event.response})"
-                        target="_top">
-                        <div class="csas-calc-white-section csas-test-section">
-                          <div class="csas-calc-row csas-half-in-mobile">
-                            <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
-                              Kolik si plánujete půjčit?
-                            </div>
-                            <div class="csas-calc-controls-group">
-                              <button
-                                class="csas-calc-controls csas-calc-controls--minus"
-                                name="actionButton" value="AMOUNTMINUS">
-                                &nbsp;
-                              </button>
-                              <div class="csas-calc-input csas-calc-input--medium">
-                                <input
-                                  type="tel"
-                                  class="csas-input-tel"
-                                  name="fAmount"
-                                  value="{{fAmount}}" [value]="form.fAmount"
-                                  on="change: ampPocForm.submit" />
-                                <label>Kč</label>
-                              </div>
-                              <button
-                                class="csas-calc-controls csas-calc-controls--plus"
-                                name="actionButton" value="AMOUNTPLUS">
-                                &nbsp;
-                              </button>
-                            </div>
-                          </div>
-                          <div class="csas-calc-row csas-half-in-mobile">
-                            <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
-                              Kolik chcete měsíčně splácet?
-                            </div>
-                            <div class="csas-calc-controls-group">
-                              <button
-                                class="csas-calc-controls csas-calc-controls--minus"
-                                name="actionButton" value="PAYMENTMINUS">
-                                &nbsp;
-                              </button>
-                              <div class="csas-calc-input csas-calc-input--medium">
-                                <input
-                                  type="tel"
-                                  class="csas-input-tel"
-                                  name="fPayment"
-                                  value="{{fPayment}}" [value]="form.fPayment"
-                                  on="change: ampPocForm.submit" />
-                                <label>Kč</label>
-                              </div>
-                              <button
-                                class="csas-calc-controls csas-calc-controls--plus"
-                                name="actionButton" value="PAYMENTPLUS">
-                                &nbsp;
-                              </button>
-                            </div>
-                          </div>
-                          <div class="csas-calc-row csas-mt-xs">
-                            <span class="tips-rotator">
-                              <div class="csas-tip">
-                                <strong>TIP:</strong>
-                                <span>Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu 6,3 % a odpustíme vám 15 posledních splátek.</span>
-                              </div>
-                            </span>
-                          </div>
+
+              <div class="grid csas-norow csas-flex-sm csas-calc-loan--inner">
+                <div class="md-8of12 csas-calc-left-section">
+                  <!-- begin form -->
+                  <div class="csas-calc-white-section csas-test-section">
+                    <div class="csas-calc-row csas-half-in-mobile">
+                      <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
+                        Kolik si plánujete půjčit?
+                      </div>
+                      <div class="csas-calc-controls-group">
+                        <button
+                          class="csas-calc-controls csas-calc-controls--minus"
+                          on="tap: AMP.setState({
+                            form: {actionButton: 'AMOUNTMINUS', fAmount: loan.fAmount, fPayment: loan.fPayment}
+                          })">
+                          &nbsp;
+                        </button>
+                        <div class="csas-calc-input csas-calc-input--medium">
+                          <input
+                            type="tel"
+                            class="csas-input-tel"
+                            [value]="loan.fAmount"
+                            value="20 000"
+                            on="change: AMP.setState({
+                              form: {fAmount: event.value, actionButton: null}, loan: {fAmount: ''}
+                            })" />
+                          <label>Kč</label>
                         </div>
-                      </form>
+                        <button
+                          class="csas-calc-controls csas-calc-controls--plus"
+                          on="tap: AMP.setState({
+                            form: {actionButton: 'AMOUNTPLUS', fAmount: loan.fAmount, fPayment: loan.fPayment}
+                          })">
+                          &nbsp;
+                        </button>
+                      </div>
                     </div>
-                    <div class="md-4of12 csas-results-section csas-results-section--justify">
-                      <div class="csas-results-section">
-                        <div class="csas-result csas-low-result csas-result-dark">
-                          <div class="csas-result-inner">
-                            <div class="csas-result-inner-left">
-                              Počet splátek při<br>
-                              řádném splácení
-                              <small>
-                                <div class="csas-text-medium-blue normalFont csas-mr-xs csas-mt-xs">
-                                  S žádnou splátkou se nezpozdíte déle než 5 dní.
-                                </div>
-                              </small>
-                            </div>
-                            <div class="csas-result-inner-right">
-                              <strong>
-                                {{bDuration}} splátek
-                              </strong><br>
-                              <small>
-                                {{fBDuration.years}} let
-                                <span>{{fBDuration.months}} měsíců</span>
-                              </small>
-                            </div>
-                          </div>
+                    <div class="csas-calc-row csas-half-in-mobile">
+                      <div class="csas-calc-controls-label csas-calc-controls-label-fixed-medium">
+                        Kolik chcete měsíčně splácet?
+                      </div>
+                      <div class="csas-calc-controls-group">
+                        <button
+                          class="csas-calc-controls csas-calc-controls--minus"
+                          on="tap: AMP.setState({
+                            form: {actionButton: 'PAYMENTMINUS', fAmount: loan.fAmount, fPayment: loan.fPayment}
+                          })">
+                          &nbsp;
+                        </button>
+                        <div class="csas-calc-input csas-calc-input--medium">
+                          <input
+                            type="tel"
+                            class="csas-input-tel"
+                            [value]="loan.fPayment"
+                            value="306"
+                            on="change: AMP.setState({
+                              form: {fPayment: event.value, actionButton: null}, loan: {fPayment: ''}
+                            })" />
+                          <label>Kč</label>
                         </div>
-                        <div class="csas-result csas-low-result">
-                          <div class="csas-result-inner">
-                            <div class="csas-result-inner-left ng-binding">
-                              Úroková sazba:
-                            </div>
-                            <div class="csas-result-inner-right">
-                              <strong>{{fBInterestRate}} %</strong>
-                            </div>
-                          </div>
+                        <button
+                          class="csas-calc-controls csas-calc-controls--plus"
+                          on="tap: AMP.setState({
+                            form: {actionButton: 'PAYMENTPLUS', fAmount: loan.fAmount, fPayment: loan.fPayment}
+                          })">
+                          &nbsp;
+                        </button>
+                      </div>
+                    </div>
+                    <div class="csas-calc-row csas-mt-xs">
+                      <span class="tips-rotator">
+                        <div class="csas-tip">
+                          <strong>TIP:</strong>
+                          <span>Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu 6,3 % a odpustíme vám 15 posledních splátek.</span>
                         </div>
-                        <div class="csas-result csas-low-result">
-                          <div class="csas-result-inner">
-                            <div class="csas-result-inner-left">RPSN</div>
-                            <div class="csas-result-inner-right">
-                              <strong>{{fBRpsn}} %</strong>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end form -->
+                </div>
+                <div class="md-4of12 csas-results-section csas-results-section--justify">
+                  <!-- begin results -->
+                  <div class="csas-results-section">
+                    <div class="csas-result csas-low-result csas-result-dark">
+                      <div class="csas-result-inner">
+                        <div class="csas-result-inner-left">
+                          Počet splátek při<br>
+                          řádném splácení
+                          <small>
+                            <div class="csas-text-medium-blue normalFont csas-mr-xs csas-mt-xs">
+                              S žádnou splátkou se nezpozdíte déle než 5 dní.
                             </div>
-                          </div>
+                          </small>
                         </div>
-                        <div class="csas-result csas-low-result">
-                          <div class="csas-result-inner">
-                            <div class="csas-result-inner-left">
-                              Celkem zaplatíte:
-                            </div>
-                            <div class="csas-result-inner-right">
-                              <strong>{{fBPaymentAmount}} Kč</strong>
-                            </div>
-                          </div>
+                        <div class="csas-result-inner-right">
+                          <strong [text]="loan.bDuration + ' splátek'">
+                            84 splátek
+                          </strong><br>
+                          <small>
+                            <span [text]="loan.fBDuration.years && loan.fBDuration.years + ' let' || ''">7 let</span>
+                            <span [text]="loan.fBDuration.months && loan.fBDuration.months + ' měsíců' || ''"></span>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="csas-result csas-low-result">
+                      <div class="csas-result-inner">
+                        <div class="csas-result-inner-left ng-binding">
+                          Úroková sazba:
+                        </div>
+                        <div class="csas-result-inner-right">
+                          <strong [text]="loan.fBInterestRate + ' %'">7,4 %</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="csas-result csas-low-result">
+                      <div class="csas-result-inner">
+                        <div class="csas-result-inner-left">RPSN</div>
+                        <div class="csas-result-inner-right">
+                          <strong [text]="loan.fBRpsn + ' %'">8,0 %</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="csas-result csas-low-result">
+                      <div class="csas-result-inner">
+                        <div class="csas-result-inner-left">
+                          Celkem zaplatíte:
+                        </div>
+                        <div class="csas-result-inner-right">
+                          <strong [text]="loan.fBPaymentAmount + ' Kč'">25 784 Kč</strong>
                         </div>
                       </div>
                     </div>
                   </div>
-                </template>
-              </amp-list>
+                  <!-- end results -->
+                </div>
+              </div>
 
-              <amp-list
-                src="/mock/params"
-                layout="fixed-height" height="399"
-                items="." single-item binding="no">
-                <template type="amp-mustache">
-                  <div class="csas-cta-section csas-flex-sm csas-norow csas-mt-md">
+              <!-- begin - cta -->
+              <div class="csas-cta-section csas-flex-sm csas-norow csas-mt-md">
 
-                    <div class="sm-12of12">
-                      <div class="csas-claim csas-center">
-                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
-                           href="{{url1}}">
-                          <i class="csas-ico_computer"></i>
-                          Sjednat online
-                        </a>
-                        <div class="csac-claim-text">
-                          Na pár kliknutí si půjčku sjednáte z pohodlí svého domova.
-                        </div>
-                      </div>
+                <div class="sm-12of12">
+                  <div class="csas-claim csas-center">
+                    <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                       href="https://url1">
+                      <i class="csas-ico_computer"></i>
+                      Sjednat online
+                    </a>
+                    <div class="csac-claim-text">
+                      Na pár kliknutí si půjčku sjednáte z pohodlí svého domova.
                     </div>
-
-                    <div class="sm-12of12">
-                      <div class="csas-claim csas-center">
-                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
-                           href="{{url2}}">
-                          <i class="csas-ico_callback"></i>
-                          Zavolejte mi
-                        </a>
-                        <div class="csac-claim-text">
-                          Zanechte nám na sebe kontakt. Zavoláme vám s konkrétní nabídkou.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="sm-12of12">
-                      <div class="csas-claim csas-center">
-                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
-                           href="{{url3}}">
-                          <i class="csas-ico_home"></i>
-                          Objednat se k bankéři
-                        </a>
-                        <div class="csac-claim-text">
-                          Vyhněte se frontám a objednejte se k bankéři ve vaší nejbližší pobočce.
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
-                </template>
-              </amp-list>
+                </div>
+
+                <div class="sm-12of12">
+                  <div class="csas-claim csas-center">
+                    <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                       href="https://url2">
+                      <i class="csas-ico_callback"></i>
+                      Zavolejte mi
+                    </a>
+                    <div class="csac-claim-text">
+                      Zanechte nám na sebe kontakt. Zavoláme vám s konkrétní nabídkou.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sm-12of12">
+                  <div class="csas-claim csas-center">
+                    <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                       href="https://url3">
+                      <i class="csas-ico_home"></i>
+                      Objednat se k bankéři
+                    </a>
+                    <div class="csac-claim-text">
+                      Vyhněte se frontám a objednejte se k bankéři ve vaší nejbližší pobočce.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- end - cta -->
             </div>
           </div>
         </div>

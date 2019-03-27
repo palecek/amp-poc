@@ -43,6 +43,8 @@ app.get('/mock/loans', (req, res) => {
 app.get('/mock/params', (req, res) => {
   enableCorsNaive(req, res)
   const value = {
+    fAmount: '300 000',
+    fPayment: '4 055',
     url1: "https://www.csas.cz/1",
     url2: "https://www.csas.cz/2",
     url3: "https://www.csas.cz/3"
