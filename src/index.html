@@ -6,10 +6,13 @@
     <title>AmpPoc</title>
     <link rel="canonical" href="http://example.ampproject.org/article-metadata.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <!-- begin - csas-loan-calculator -->
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700">
+    <!-- end - csas-loan-calculator -->
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -22,8 +25,8 @@
       }
     </script>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700">
     <style amp-custom>
+      /* begin - csas-loan-calculator */
       *, :after, :before {
         box-sizing: border-box;
       }
@@ -350,11 +353,13 @@
         }
       }
       /* end - cta - red buttons */
+      /* end - csas-loan-calculator */
     </style>
   </head>
   <body style="background-color: #dff2fd;">
     <h1>AmpPoc</h1>
 
+    <!-- begin - csas-loan-calculator -->
     <div class="csas-loan-calculator">
       <div class="inlet-wrapp">
         <div class="inlet-inner">
@@ -371,6 +376,7 @@
                         id="ampPocForm"
                         method="get"
                         action-xhr="/mock/loans"
+                        action="/mock/loans"
                         on="submit: AMP.setState({form: {fAmount: '', fPayment: ''}});
                             submit-success: AMP.setState({form: event.response})"
                         target="_top">
@@ -382,7 +388,7 @@
                             <div class="csas-calc-controls-group">
                               <button
                                 class="csas-calc-controls csas-calc-controls--minus"
-                                name="actionButton" value="amountMinus">
+                                name="actionButton" value="AMOUNTMINUS">
                                 &nbsp;
                               </button>
                               <div class="csas-calc-input csas-calc-input--medium">
@@ -396,7 +402,7 @@
                               </div>
                               <button
                                 class="csas-calc-controls csas-calc-controls--plus"
-                                name="actionButton" value="amountPlus">
+                                name="actionButton" value="AMOUNTPLUS">
                                 &nbsp;
                               </button>
                             </div>
@@ -408,7 +414,7 @@
                             <div class="csas-calc-controls-group">
                               <button
                                 class="csas-calc-controls csas-calc-controls--minus"
-                                name="actionButton" value="paymentMinus">
+                                name="actionButton" value="PAYMENTMINUS">
                                 &nbsp;
                               </button>
                               <div class="csas-calc-input csas-calc-input--medium">
@@ -422,7 +428,7 @@
                               </div>
                               <button
                                 class="csas-calc-controls csas-calc-controls--plus"
-                                name="actionButton" value="paymentPlus">
+                                name="actionButton" value="PAYMENTPLUS">
                                 &nbsp;
                               </button>
                             </div>
@@ -550,5 +556,6 @@
         </div>
       </div>
     </div>
+    <!-- end - csas-loan-calculator -->
   </body>
 </html>

@@ -17,13 +17,13 @@ app.get('/mock/loans', (req, res) => {
   let payment = req.query.fPayment ? currencyParser(req.query.fPayment) || 0 : 0
   let loan = loans.getLoanByAmountAndPayment(amount, payment)
 
-  if (req.query.actionButton === 'amountPlus') {
+  if (req.query.actionButton === 'AMOUNTPLUS') {
     loan = loans.getLoanByAmountAndPayment(loans.getNextAmount(amount), payment)
-  } else if (req.query.actionButton === 'amountMinus') {
+  } else if (req.query.actionButton === 'AMOUNTMINUS') {
     loan = loans.getLoanByAmountAndPayment(loans.getPrevAmount(amount), payment)
-  } else if (req.query.actionButton === 'paymentPlus') {
+  } else if (req.query.actionButton === 'PAYMENTPLUS') {
     loan = loans.getLoanByAmountAndPayment(amount, loans.getNextPayment(amount, payment))
-  } else if (req.query.actionButton === 'paymentMinus') {
+  } else if (req.query.actionButton === 'PAYMENTMINUS') {
     loan = loans.getLoanByAmountAndPayment(amount, loans.getPrevPayment(amount, payment))
   }
 
@@ -59,13 +59,7 @@ function enableCorsNaive(req, res, origin, opt_exposeHeaders) {
   }
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', origin);
-  res.setHeader('Access-Control-Expose-Headers',
-      ['AMP-Access-Control-Allow-Source-Origin']
-          .concat(opt_exposeHeaders || []).join(', '));
-  if (req.query.__amp_source_origin) {
-    res.setHeader('AMP-Access-Control-Allow-Source-Origin',
-        req.query.__amp_source_origin);
-  }
+  res.setHeader('AMP-Access-Control-Allow-Source-Origin', origin);
 }
 
 const httpsServer = https.createServer(httpsCredentials, app)
