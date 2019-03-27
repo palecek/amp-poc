@@ -403,6 +403,8 @@
         </script>
       </amp-state>
 
+      <amp-bind-macro id="numRound01" arguments="num" expression="(ceil(num * 10)/10).toPrecision(2).split('.').join(',')"></amp-bind-macro>
+
       <div class="inlet-wrapp">
         <div class="inlet-inner">
           <div class="csas-wrapper csas-section">
@@ -518,7 +520,7 @@
                           Úroková sazba:
                         </div>
                         <div class="csas-result-inner-right">
-                          <strong [text]="loan.fBInterestRate + ' %'">7,4 %</strong>
+                          <strong [text]="numRound01(loan.bInterestRate) + ' %'">7,4 %</strong>
                         </div>
                       </div>
                     </div>
