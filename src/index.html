@@ -82,7 +82,7 @@
         padding-left: 0;
         padding-right: 0;
       }
-      .md-8of12, .md-4of12 {
+      .md-8of12, .md-4of12, .sm-12of12 {
         box-sizing: border-box;
         display: inline-block;
         font-size: 1.6rem;
@@ -288,6 +288,68 @@
         white-space: nowrap;
         font-size: 18px;
       }
+      /* begin - cta - red buttons */
+      .inlet-wrapp .csas-mt-md {
+        margin-top: 45px;
+      }
+      .inlet-wrapp .csas-norow {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .inlet-wrapp .csas-cta-section {
+        -webkit-box-flex: 1;
+        flex: 1 auto;
+        background-color: #fff;
+        border-radius: 0 0 4px 4px;
+      }
+      .inlet-wrapp .csas-center {
+        text-align: center;
+      }
+      .inlet-wrapp .csas-click.csas-click--red {
+        border: none;
+        color: #fff!important;
+        background-color: #e60000;
+        box-shadow: inset 0 -3px 0 0 #b30505;
+      }
+      .inlet-wrapp .csas-click.csas-click-with-icon {
+        max-width: 230px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        vertical-align: middle;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+      .inlet-wrapp .csas-mb-xs {
+        margin-bottom: 15px;
+      }
+      .inlet-wrapp .csas-click {
+        width: 100%;
+        font-size: 14px;
+        font-weight: 600;
+        word-break: break-word;
+        word-wrap: break-word;
+        border-radius: 4px;
+        text-align: center;
+        padding: 11px 17px;
+        line-height: 1.3;
+        min-width: 120px;
+        transition: .25s;
+      }
+      .inlet-wrapp a {
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+      }
+      @media (max-width: 1200px) {
+        .inlet-wrapp .csac-claim-text {
+          margin-bottom: 20px;
+        }
+      }
+      /* end - cta - red buttons */
     </style>
   </head>
   <body style="background-color: #dff2fd;">
@@ -300,7 +362,7 @@
             <div class="csas-calc-loan csas-mb-md">
               <amp-list
                 src="/mock/loans"
-                layout="fixed-height" height="1500"
+                layout="fixed-height" height="752"
                 items="." single-item binding="no">
                 <template type="amp-mustache">
                   <div class="grid csas-norow csas-flex-sm csas-calc-loan--inner">
@@ -391,11 +453,11 @@
                             </div>
                             <div class="csas-result-inner-right">
                               <strong>
-                                {{duration}} splátek
+                                {{bDuration}} splátek
                               </strong><br>
                               <small>
-                                {{fDuration.years}} let
-                                <span>{{fDuration.months}} měsíců</span>
+                                {{fBDuration.years}} let
+                                <span>{{fBDuration.months}} měsíců</span>
                               </small>
                             </div>
                           </div>
@@ -406,7 +468,7 @@
                               Úroková sazba:
                             </div>
                             <div class="csas-result-inner-right">
-                              <strong>{{bInterestRate}} %</strong>
+                              <strong>{{fBInterestRate}} %</strong>
                             </div>
                           </div>
                         </div>
@@ -414,7 +476,7 @@
                           <div class="csas-result-inner">
                             <div class="csas-result-inner-left">RPSN</div>
                             <div class="csas-result-inner-right">
-                              <strong>{{bRpsn}} %</strong>
+                              <strong>{{fBRpsn}} %</strong>
                             </div>
                           </div>
                         </div>
@@ -424,7 +486,7 @@
                               Celkem zaplatíte:
                             </div>
                             <div class="csas-result-inner-right">
-                              <strong>{{fbPaymentAmount}} Kč</strong>
+                              <strong>{{fBPaymentAmount}} Kč</strong>
                             </div>
                           </div>
                         </div>
@@ -436,12 +498,50 @@
 
               <amp-list
                 src="/mock/params"
-                layout="fixed-height" height="100"
+                layout="fixed-height" height="399"
                 items="." single-item binding="no">
                 <template type="amp-mustache">
                   <div class="csas-cta-section csas-flex-sm csas-norow csas-mt-md">
-                    <a href="{{url1}}">button 1</a>
-                    <a href="{{url2}}">button 2</a>
+
+                    <div class="sm-12of12">
+                      <div class="csas-claim csas-center">
+                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                           href="{{url1}}">
+                          <i class="csas-ico_computer"></i>
+                          Sjednat online
+                        </a>
+                        <div class="csac-claim-text">
+                          Na pár kliknutí si půjčku sjednáte z pohodlí svého domova.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sm-12of12">
+                      <div class="csas-claim csas-center">
+                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                           href="{{url2}}">
+                          <i class="csas-ico_callback"></i>
+                          Zavolejte mi
+                        </a>
+                        <div class="csac-claim-text">
+                          Zanechte nám na sebe kontakt. Zavoláme vám s konkrétní nabídkou.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sm-12of12">
+                      <div class="csas-claim csas-center">
+                        <a class="csas-click csas-click--red csas-click-with-icon csas-mb-xs"
+                           href="{{url3}}">
+                          <i class="csas-ico_home"></i>
+                          Objednat se k bankéři
+                        </a>
+                        <div class="csac-claim-text">
+                          Vyhněte se frontám a objednejte se k bankéři ve vaší nejbližší pobočce.
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </template>
               </amp-list>

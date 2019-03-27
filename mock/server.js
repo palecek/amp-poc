@@ -6,6 +6,7 @@ const port = 9800
 const currencyFormatter = require('./lib/currency').formatter
 const currencyParser = require('./lib/currency').parser
 const durationFormatter = require('./lib/duration').formatter
+const numberFormatter = require('./lib/number').formatter
 const Loans = require('./Loans').Loans
 const loans = new Loans(require('./loans.json'))
 
@@ -29,7 +30,12 @@ app.get('/mock/loans', (req, res) => {
   loan.fAmount = currencyFormatter(loan.amount)
   loan.fPayment = currencyFormatter(loan.monthlyPayment)
   loan.fDuration = durationFormatter(loan.duration)
-  loan.fbPaymentAmount = currencyFormatter(loan.bPaymentAmount)
+  loan.fBDuration = durationFormatter(loan.bDuration)
+  loan.fBPaymentAmount = currencyFormatter(loan.bPaymentAmount)
+  loan.fRpsn = numberFormatter(loan.rpsn, 1)
+  loan.fBRpsn = numberFormatter(loan.bRpsn, 1)
+  loan.fInterestRate = numberFormatter(loan.interestRate, 1)
+  loan.fBInterestRate = numberFormatter(loan.bInterestRate, 1)
 
   res.send(JSON.stringify(loan))
 })
@@ -38,7 +44,8 @@ app.get('/mock/params', (req, res) => {
   enableCorsNaive(req, res)
   const value = {
     url1: "https://www.csas.cz/1",
-    url2: "https://www.csas.cz/2"
+    url2: "https://www.csas.cz/2",
+    url3: "https://www.csas.cz/3"
   }
 
   res.send(JSON.stringify(value))
