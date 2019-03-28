@@ -361,8 +361,8 @@
       <amp-state id="form">
         <script type="application/json">
           {
-            "fAmount": "20 000",
-            "fPayment": "306",
+            "fAmount": "300 000",
+            "fPayment": "4 055",
             "actionButton": null
           }
         </script>
@@ -373,32 +373,32 @@
         [src]="'/mock/loans?fAmount=' + form.fAmount + '&fPayment=' + form.fPayment + '&actionButton=' + form.actionButton">
         <script type="application/json">
           {
-            "amount":20000,
-            "interestRate":9.9,
-            "rpsn":10.87,
-            "monthlyPayment":334,
-            "payments":84,
-            "duration":84,
-            "paymentAmount":28240,
-            "bInterestRate":7.05,
-            "bDuration":74,
-            "bPaymentAmount":24900,
-            "bRpsn":7.65,
-            "fAmount":"20 000",
-            "fPayment":"334",
-            "fDuration":{
-              "years":7,
-              "months":0
+            "amount": 300000,
+            "interestRate": 8.7,
+            "rpsn": 9.2,
+            "monthlyPayment": 4055,
+            "payments": 108,
+            "duration": 108,
+            "paymentAmount": 440940,
+            "bInterestRate": 5.9,
+            "bDuration": 93,
+            "bPaymentAmount": 380115,
+            "bRpsn": 6.2,
+            "fInterestRate": "8,7",
+            "fRpsn": "9,2",
+            "fBInterestRate": "5,9",
+            "fBRpsn": "6,2",
+            "fAmount": "300 000",
+            "fPayment": "4 055",
+            "fBPaymentAmount": "380 115",
+            "fDuration": {
+              "years": 9,
+              "months": 0
             },
-            "fBDuration":{
-              "years":6,
-              "months":2
-            },
-            "fBPaymentAmount":"24 900",
-            "fRpsn":"10,9",
-            "fBRpsn":"7,7",
-            "fInterestRate":"9,9",
-            "fBInterestRate":"7,1"
+            "fBDuration": {
+              "years": 7,
+              "months": 9
+            }
           }
         </script>
       </amp-state>
@@ -431,7 +431,7 @@
                             type="tel"
                             class="csas-input-tel"
                             [value]="loan.fAmount"
-                            value="20 000"
+                            value="300 000"
                             on="change: AMP.setState({
                               form: {fAmount: event.value, actionButton: null}, loan: {fAmount: ''}
                             })" />
@@ -463,7 +463,7 @@
                             type="tel"
                             class="csas-input-tel"
                             [value]="loan.fPayment"
-                            value="306"
+                            value="4 055"
                             on="change: AMP.setState({
                               form: {fPayment: event.value, actionButton: null}, loan: {fPayment: ''}
                             })" />
@@ -482,7 +482,9 @@
                       <span class="tips-rotator">
                         <div class="csas-tip">
                           <strong>TIP:</strong>
-                          <span>Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu 6,3 % a odpustíme vám 15 posledních splátek.</span>
+                          <span [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + numRound01(loan.bInterestRate) + ' % a odpustíme vám 15 posledních splátek.'">
+                            Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu 5,9 % a odpustíme vám 15 posledních splátek.
+                          </span>
                         </div>
                       </span>
                     </div>
@@ -505,11 +507,11 @@
                         </div>
                         <div class="csas-result-inner-right">
                           <strong [text]="loan.bDuration + ' splátek'">
-                            84 splátek
+                            93 splátek
                           </strong><br>
                           <small>
                             <span [text]="loan.fBDuration.years && loan.fBDuration.years + ' let' || ''">7 let</span>
-                            <span [text]="loan.fBDuration.months && loan.fBDuration.months + ' měsíců' || ''"></span>
+                            <span [text]="loan.fBDuration.months && loan.fBDuration.months + ' měsíců' || ''">9 měsíců</span>
                           </small>
                         </div>
                       </div>
@@ -520,7 +522,7 @@
                           Úroková sazba:
                         </div>
                         <div class="csas-result-inner-right">
-                          <strong [text]="numRound01(loan.bInterestRate) + ' %'">7,4 %</strong>
+                          <strong [text]="numRound01(loan.bInterestRate) + ' %'">5,9 %</strong>
                         </div>
                       </div>
                     </div>
@@ -528,7 +530,7 @@
                       <div class="csas-result-inner">
                         <div class="csas-result-inner-left">RPSN</div>
                         <div class="csas-result-inner-right">
-                          <strong [text]="loan.fBRpsn + ' %'">8,0 %</strong>
+                          <strong [text]="loan.fBRpsn + ' %'">6,2 %</strong>
                         </div>
                       </div>
                     </div>
@@ -538,7 +540,7 @@
                           Celkem zaplatíte:
                         </div>
                         <div class="csas-result-inner-right">
-                          <strong [text]="loan.fBPaymentAmount + ' Kč'">25 784 Kč</strong>
+                          <strong [text]="loan.fBPaymentAmount + ' Kč'">380 115 Kč</strong>
                         </div>
                       </div>
                     </div>
