@@ -36,6 +36,7 @@ app.get('/mock/loans', (req, res) => {
   loan.fBRpsn = numberFormatter(loan.bRpsn, 1)
   loan.fInterestRate = numberFormatter(loan.interestRate, 1)
   loan.fBInterestRate = numberFormatter(loan.bInterestRate, 1)
+  loan.forgiveInstallments = loan.duration - loan.bDuration > 0 ? loan.duration - loan.bDuration : 0
 
   res.send(JSON.stringify(loan))
 })
