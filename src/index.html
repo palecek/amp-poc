@@ -413,7 +413,8 @@
             "fBDuration": {
               "years": 7,
               "months": 9
-            }
+            },
+            "forgivenInstallments": 15
           }
         </script>
       </amp-state>
@@ -549,18 +550,18 @@
                             [hidden]="getHintId(loan.amount, loan.duration) != 2">
                             <span
                               hidden
-                              [hidden]="!isPluralOne(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' poslední splátku.'">
+                              [hidden]="!isPluralOne(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' poslední splátku.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralFew(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' poslední splátky.'">
+                              [hidden]="!isPluralFew(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' poslední splátky.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralMany(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' posledních splátek.'">
+                              [hidden]="!isPluralMany(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' posledních splátek.'">
                             </span>
                           </span>
                           <span
@@ -568,18 +569,18 @@
                             [hidden]="getHintId(loan.amount, loan.duration) != 3">
                             <span
                               hidden
-                              [hidden]="!isPluralOne(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgiveInstallments + ' poslední splátku.'">
+                              [hidden]="!isPluralOne(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgivenInstallments + ' poslední splátku.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralFew(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgiveInstallments + ' poslední splátky.'">
+                              [hidden]="!isPluralFew(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgivenInstallments + ' poslední splátky.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralMany(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgiveInstallments + ' posledních splátek.'">
+                              [hidden]="!isPluralMany(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám odpustíme ' + loan.forgivenInstallments + ' posledních splátek.'">
                             </span>
                           </span>
                           <span
@@ -587,18 +588,18 @@
                             [hidden]="getHintId(loan.amount, loan.duration) != 4">
                             <span
                               hidden
-                              [hidden]="!isPluralOne(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' poslední splátku.'">
+                              [hidden]="!isPluralOne(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' poslední splátku.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralFew(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' poslední splátky.'">
+                              [hidden]="!isPluralFew(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' poslední splátky.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralMany(loan.forgiveInstallments)"
-                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgiveInstallments + ' posledních splátek.'">
+                              [hidden]="!isPluralMany(loan.forgivenInstallments)"
+                              [text]="'Využijte naplno naše cenové výhody. Zvolte si nejnižší splátku a odpustíme vám při řádném splácení ' + loan.forgivenInstallments + ' posledních splátek.'">
                             </span>
                           </span>
                           <span
@@ -606,18 +607,18 @@
                             [hidden]="getHintId(loan.amount, loan.duration) != 5">
                             <span
                               hidden
-                              [hidden]="!isPluralOne(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgiveInstallments + ' poslední splátku.'">
+                              [hidden]="!isPluralOne(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgivenInstallments + ' poslední splátku.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralFew(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgiveInstallments + ' poslední splátky.'">
+                              [hidden]="!isPluralFew(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgivenInstallments + ' poslední splátky.'">
                             </span>
                             <span
                               hidden
-                              [hidden]="!isPluralMany(loan.forgiveInstallments)"
-                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgiveInstallments + ' posledních splátek.'">
+                              [hidden]="!isPluralMany(loan.forgivenInstallments)"
+                              [text]="'Toto je správná volba! Takto využijte naplno naše cenové výhody. Při řádném splácení vám garantujeme úrokovou sazbu ' + loan.fBInterestRate + ' % a odpustíme vám ' + loan.forgivenInstallments + ' posledních splátek.'">
                             </span>
                           </span>
                           <span
