@@ -634,6 +634,7 @@
             "payments": 108,
             "duration": 108,
             "paymentAmount": 440940,
+            "fPaymentAmount": 440940,
             "bInterestRate": 5.9,
             "bDuration": 93,
             "bPaymentAmount": 380115,
@@ -1021,24 +1022,36 @@
                             Půjčka při řádném splácení
                             <small><div class="normalFont">S žádnou splátkou se nezpozdíte déle než 5 dní.</div></small>
                           </td>
-                          <td data-title="Výše půjčky">
+                          <td data-title="Výše půjčky"
+                              [text]="loan.fAmount + ' Kč'">
                             300 000 Kč
                           </td>
                           <td data-title="Počet splátek">
-                            <strong>93</strong><br>
-                            <small>7 let <span [hidden]="loan.fBDuration.months == 0">9 měsíců</span></small>
+                            <strong [text]="loan.bDuration">93</strong><br>
+                            <small>
+                              <span [hidden]="loan.fBDuration.years == 0"
+                                    [text]="getPluralYears(loan.fBDuration.years)">
+                                7 let
+                              </span>
+                              <span [hidden]="loan.fBDuration.months == 0"
+                                    [text]="getPluralMonths(loan.fBDuration.months)">
+                                9 měsíců
+                              </span>
+                            </small>
                           </td>
-                          <td data-title="Úroková sazba">
+                          <td data-title="Úroková sazba"
+                              [text]="loan.fBInterestRate + ' %'">
                             5,9 %
                           </td>
                           <td class="csas-nowrap" data-title="RPSN">
-                            <span>
+                            <span [text]="loan.fBRpsn + ' %'">
                               6,2 %
                             </span>
                             <i class="csas-tooltip--from-bottom csas-tooltip--medium hidden-sm-up csas-tooltip--left"
                                aria-label="RPSN udává procentuální podíl z dlužné částky, který musí spotřebitel zaplatit za období jednoho roku v souvislosti se splátkami, správou a dalšími výdaji spojenými s čerpáním úvěru.">?</i>
                           </td>
-                          <td data-title="Celkem zaplatíte">
+                          <td data-title="Celkem zaplatíte"
+                              [text]="loan.fBPaymentAmount + ' Kč'">
                             380 115 Kč
                           </td>
                         </tr>
@@ -1047,24 +1060,38 @@
                             Půjčka bez řádného splácení
                             <small><div class="normalFont">Pokud nesplníte podmínky řádného splácení.</div></small>
                           </td>
-                          <td data-title="Výše půjčky">
+                          <td data-title="Výše půjčky"
+                            [text]="loan.fAmount + ' Kč'">
                             300 000 Kč
                           </td>
                           <td data-title="Počet splátek">
-                            <strong>108</strong><br>
-                            <small>9 let <span [hidden]="loan.fDuration == 0">0 měsíců</span></small>
+                            <strong [text]="loan.duration">
+                              108
+                            </strong><br>
+                            <small>
+                              <span [hidden]="loan.fDuration.years == 0"
+                                    [text]="getPluralYears(loan.fDuration.years)">
+                                9 let
+                              </span>
+                              <span hidden
+                                    [hidden]="loan.fDuration.months == 0"
+                                    [text]="getPluralMonths(loan.fDuration.months)">
+                              </span>
+                            </small>
                           </td>
-                          <td data-title="Úroková sazba">
+                          <td data-title="Úroková sazba"
+                              [text]="loan.fInterestRate + ' %'">
                             8,7 %
                           </td>
                           <td class="csas-nowrap" data-title="RPSN">
-                            <span>
+                            <span [text]="loan.fRpsn + ' %'">
                               9,2 %
                             </span>
                             <i class="csas-tooltip--from-bottom csas-tooltip--medium hidden-sm-up csas-tooltip--left"
                                aria-label="RPSN udává procentuální podíl z dlužné částky, který musí spotřebitel zaplatit za období jednoho roku v souvislosti se splátkami, správou a dalšími výdaji spojenými s čerpáním úvěru.">?</i>
                           </td>
-                          <td data-title="Celkem zaplatíte">
+                          <td data-title="Celkem zaplatíte"
+                              [text]="loan.fPaymentAmount + ' Kč'">
                             440 940 Kč
                           </td>
                         </tr>

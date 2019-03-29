@@ -31,6 +31,7 @@ app.get('/mock/loans', (req, res) => {
   loan.fPayment = currencyFormatter(loan.monthlyPayment)
   loan.fDuration = durationFormatter(loan.duration)
   loan.fBDuration = durationFormatter(loan.bDuration)
+  loan.fPaymentAmount = currencyFormatter(loan.paymentAmount)
   loan.fBPaymentAmount = currencyFormatter(loan.bPaymentAmount)
   loan.fRpsn = numberFormatter(loan.rpsn, 1)
   loan.fBRpsn = numberFormatter(loan.bRpsn, 1)
