@@ -8,7 +8,9 @@
   "keywords": [],
   "license": "UNLICENSED",
   "devDependencies": {
-    "editorconfig": "^0.15.3",
-    "express": "4.16.4"
+    "editorconfig": "^0.15.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
